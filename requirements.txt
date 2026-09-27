@@ -1,0 +1,28 @@
+# 云端 GPU 机器的依赖。本机（无 GPU、仅用于编辑和推送）不需要装。
+#
+# 版本建议：vLLM 迭代很快，装完请把实际版本记下来 —— 结果没有版本信息就没有可比性。
+# report.py 会自动把环境快照写进报告。
+#
+# 最省事的装法（vLLM 会带对版本的 torch）：
+#   pip install vllm
+#   pip install autoawq
+# 然后装 report/eval 用到的：
+#   pip install -r requirements.txt
+
+# --- 推理与量化 ---
+vllm>=0.6.0
+autoawq>=0.2.5
+transformers>=4.45.0
+torch>=2.4.0
+accelerate>=0.34.0
+
+# --- 数据与评估 ---
+datasets>=2.20.0
+huggingface_hub>=0.24.0
+numpy>=1.26.0
+
+# --- 报告与图表（本机也能跑）---
+matplotlib>=3.8.0
+
+# 可选：任务指标评估。PPL 之外还想测指令跟随能力时再装
+# lm-eval>=0.4.4

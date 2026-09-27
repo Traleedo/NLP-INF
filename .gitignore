@@ -1,0 +1,18 @@
+# 注意：git 的 .gitignore 只认正斜杠，原文件的 `scripts\__pycache__\` 是不生效的
+__pycache__/
+*.py[cod]
+
+# 量化后的模型权重（数 GB，绝不能进仓库）
+model/
+
+# 中间产物
+results/logs/
+results/raw/
+results/*.pt
+
+# 保留 results/REPORT.md 和 results/figures/ —— 那是交付物，需要提交
+
+# 环境
+.venv/
+venv/
+.env
