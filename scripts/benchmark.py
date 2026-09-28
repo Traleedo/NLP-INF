@@ -204,12 +204,7 @@ def bench_help() -> str:
 
 
 def build_bench_cmd(help_text: str, tag: str, rate: float, out_name: str) -> list[str]:
-    """
-    构造 vllm bench serve 命令。
 
-    vLLM 迭代很快，`--dataset` 在部分版本里叫 `--dataset-name`，
-    所以这里探测 help 文本按实际支持的 flag 来拼，避免换个版本就崩。
-    """
     def pick(*candidates: str) -> str | None:
         for c in candidates:
             if c in help_text:
