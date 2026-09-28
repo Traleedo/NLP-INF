@@ -1,0 +1,24 @@
+{
+  "tag": "fp16",
+  "label": "FP16 原始模型",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "dataset": "wikitext-2-raw-v1/test",
+  "env": {
+    "platform": "Linux-4.19.0-20-amd64-x86_64-with-glibc2.31",
+    "python": "3.10.12",
+    "gpu": "NVIDIA A40",
+    "gpu_mem_gb": 47.4,
+    "torch": "2.13.0+cu130",
+    "transformers": "5.17.0",
+    "vllm": "0.30.0",
+    "awq": "0.2.9",
+    "datasets": "5.0.1",
+    "cuda": "13.0"
+  },
+  "ppl": 6.508483600807175,
+  "nll_mean": 1.8731064952633985,
+  "tokens_scored": 298496,
+  "windows": 582,
+  "max_len": 2048,
+  "stride": 512
+}
