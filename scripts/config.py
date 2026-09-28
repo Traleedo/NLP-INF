@@ -1,28 +1,14 @@
-"""
-集中配置：所有路径、模型名、量化/评估/压测参数都从这里取。
-
-修复的第一个坑：原项目路径下划线/连字符不一致
-  - quantize_awq.py 写 files/sharegpt_1000.json
-  - 实际文件是     files/sharegpt-1000.json
-  - pressure_Test.sh 又写成 ./sharegpt_1000.json
-三处对不上，脚本必然 FileNotFoundError。现在只有这一个地方定义路径。
-
-所有参数都可以用环境变量覆盖，方便在云端机器上做参数扫描（消融实验）。
-"""
 from __future__ import annotations
 
 import os
 import sys
 from pathlib import Path
 
-# Windows 控制台默认是 GBK，打印 ✓ / ✅ / 🎉 会直接 UnicodeEncodeError 崩掉。
-# 本机（无 GPU）正是用 report.py 拿云端结果重新出报告的场景，所以必须修。
 for _stream in (sys.stdout, sys.stderr):
     try:
         _stream.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, ValueError, OSError):
-        pass  # 不是 TTY 或已重定向时无所谓
-
+        pass  
 # ---------------------------------------------------------------- 目录
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MODELS_DIR = PROJECT_ROOT / "model"
